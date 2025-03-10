@@ -31,8 +31,11 @@ public class SmoothieDetails {
 	    @Column(name = "direction")
 	    private String direction;
 	    
-	    @Column(name = "nutrition ")
+	    @Column(name = "nutrition")
 	    private String nutrition ;
+	
+	    @Column(name = "calories")
+	    private Int calories ;
 	    
 	    public Long getSmoothieId() {
 	        return smoothieId;
@@ -88,6 +91,14 @@ public class SmoothieDetails {
 
 	    public void setNutrition(String nutrition) {
 	        this.nutrition = nutrition;
+	    }
+	
+	    public Int getCalories() {
+	        return calories;
+	    }
+
+	    public void setCalories(Int calories) {
+	        this.calories = calories;
 	    }
 	    
 	}
