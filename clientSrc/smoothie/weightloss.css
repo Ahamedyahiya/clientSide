@@ -1,0 +1,119 @@
+body{
+    background-color: chartreuse;
+}
+.main-container{
+    background-color: aqua;
+    width:280px;
+    padding:100px 0px;
+    position: relative;
+    top:120px;
+    left:100px;
+    border-radius:10px;
+
+}
+h1{
+    position: relative;
+    top:50px;
+    left:10px;
+}
+button{
+    padding:8px 30px;
+    background-color: cornflowerblue;
+    text-transform: uppercase;
+    box-shadow:0px 0px 10px yellow,0px 0px 20px yellow,0px 0px 30px yellow,0px 0px 40px yellow;
+    border-radius:15px;
+    color:whitesmoke ;
+    border:none;
+    position: relative;
+    top:40px;
+    left:90px;
+}
+.label_loss{
+    position: relative;
+    left:-13px;
+}
+.loss{
+    position: relative;
+    left:23px;
+}
+label{
+    position: relative;
+    top:-20px;
+    font-size:20px;
+}
+#loss{
+    padding:6px 40px;
+    border:none;
+    position: relative;
+    left:-10px;
+}
+.smoothie-recommend{
+    position: relative;
+    top:-150px;
+    left:700px;
+}
+
+#protien{
+   position: relative;
+   top:-20px;
+   left:10px;
+    padding:5px 20px;
+    border:none ;
+
+}
+#carbs{
+   position: relative;
+   top:-14px;
+   left:23px;
+
+   padding:5px 20px;
+   border:none ;
+}
+#fat{
+   position: relative;
+   top:-20px;
+   left:44px;
+   padding:5px 20px;
+   border:none;
+}
+#calories{
+    position: relative;
+    top:-20px;
+    left:8px;
+    padding:5px 20px;
+    border:none ;
+}
+.protien{
+    position:relative;
+    top:-60px;
+}
+.carbs{
+    position: relative;
+    top:-35px;
+}
+.fat{
+   position: relative;
+   top:5px;
+}
+.calories{
+    position: relative;
+    top:35px;
+}
+#btn{
+
+ padding:8px 30px;
+    background-color: cornflowerblue;
+    text-transform: uppercase;
+    box-shadow:0px 0px 10px yellow,0px 0px 20px yellow,0px 0px 30px yellow,0px 0px 40px yellow;
+    border-radius:15px;
+    color:whitesmoke ;
+    border:none;
+    position: relative;
+    top:60px;
+    left:160px;
+}
+#hh{
+    position: relative;
+    top:-300px;
+    left:700px;
+}

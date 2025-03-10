@@ -1,0 +1,145 @@
+body{
+    background-color:whitesmoke;
+}
+.main-container{
+     background-color:#C4D9FF;
+     /* box-shadow:0px 0px 10px red,
+     0px 0px 20px red,
+     0px 0px 30px red;  */
+     border:3px solid #F72C5B ;
+    width:320px;
+    padding:70px 0px;
+    position: relative;
+    top:150px;
+    left:100px;
+    border-radius:10px;
+
+}
+h1{
+    position: relative;
+    top:50px;
+    left:10px;
+}
+#btn1{
+    padding:12px 100px;
+    background-color:goldenrod;
+    text-transform: uppercase;
+    /* box-shadow:0px 0px 10px yellow,0px 0px 20px yellow,0px 0px 30px yellow,0px 0px 40px yellow; */
+    border-radius:5px;
+    color:whitesmoke ;
+     border:none;
+    position: relative;
+    top:20px;
+    left:10px;
+}
+ /* button:hover{
+   box-shadow:0px 0px 10px red,0px 0px 20px red,0px 0px 30px red;
+} */
+.gain{
+    position: relative;
+    left:23px;
+}
+label{
+    position: relative;
+    top:-20px;
+    font-size:20px;
+}
+#gain{
+    padding:12px 50px;
+    border:none;
+    position: relative;
+    top:-20px;
+    left:-20px;
+}
+.smoothie-container{
+     /* box-shadow:0px 0px 10px red,
+    0px 0px 20px red,
+    0px 0px 30px red;  */
+    border:3px solid black ;
+    width:450px ;
+    padding:120px 0px;
+    background-color:#AEEA94;
+    position: relative;
+    top:-230px;
+    left:700px;
+    border-radius:15px;
+}
+
+#protien{
+   position: relative;
+   top:-20px;
+   left:10px;
+    padding:5px 20px;
+    border:none;
+
+}
+#carbs{
+   position: relative;
+   top:-14px;
+   left:23px;
+
+   padding:5px 20px;
+   border:none ;
+}
+#fat{
+   position: relative;
+   top:-20px;
+   left:44px;
+   padding:5px 20px;
+   border:none;
+}
+#calories{
+    position: relative;
+    top:-20px;
+    left:4px;
+    padding:5px 20px;
+    border:none ;
+}
+.protien{
+    position:relative;
+    top:-60px;
+}
+.carbs{
+    position: relative;
+    top:-35px;
+}
+.fat{
+   position: relative;
+   top:5px;
+}
+.calories{
+    position: relative;
+    top:35px;
+}
+#btn2{
+
+    padding:10px 100px;
+    background-color: cornflowerblue;
+    text-transform: uppercase;
+     /* box-shadow:0px 0px 10px yellow,
+     0px 0px 20px yellow,
+     0px 0px 30px yellow,
+     0px 0px 40px yellow; */
+    border-radius:5px;
+    color:whitesmoke ;
+    border:none;
+    position: relative;
+    top:65px;
+    left:90px;
+}
+#hh{
+    position: relative;
+    top:-285px;
+    left:700px;
+}
+.label_gain{
+
+    position: relative;
+    top:-40px;
+    left:-22px;
+}
+form{
+    position: relative;
+    top:20px ;
+    left:20px ;
+}
