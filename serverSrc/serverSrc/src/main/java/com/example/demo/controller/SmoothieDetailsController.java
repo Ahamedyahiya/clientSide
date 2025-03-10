@@ -26,9 +26,9 @@ public class SmoothieDetailsController {
 	    private SmoothieDetailsRepository repository;
 	  private static final Logger logger = Logger.getLogger(SmoothieDetailsController.class.getName());
 
-	  @GetMapping("/getAllSmoothie")
-	  public ResponseEntity<List<SmoothieDetails>> getAllSmoothies() {
-	      List<SmoothieDetails> smoothies = repository.findAll();
+	  @GetMapping("/getAllSmoothie/{calories}")
+	  public ResponseEntity<List<SmoothieDetails>> getAllSmoothies(@PathVariable Long calories) {
+	      List<SmoothieDetails> smoothies = repository.findSmoothieByCalories(calories);
 
 	      if (smoothies.isEmpty()) {
 	          return ResponseEntity.noContent().build(); 
@@ -136,7 +136,8 @@ public class SmoothieDetailsController {
         @RequestParam("description") String description,
         @RequestParam("ingredients") String ingredients,
         @RequestParam("directions") String directions,
-        @RequestParam("nutrition") String nutrition
+        @RequestParam("nutrition") String nutrition,
+        @RequestParam("calories") Long calories
         
     ) {
         try {
@@ -180,6 +181,7 @@ public class SmoothieDetailsController {
             smoothie.setIngredients(ingredients);
             smoothie.setDirection(directions);
             smoothie.setNutrition(nutrition);
+            smoothie.setCalories(calories);
             logger.info("Smoothie details: " + smoothie);
             SmoothieDetails savedSmoothie = repository.save(smoothie);
 
