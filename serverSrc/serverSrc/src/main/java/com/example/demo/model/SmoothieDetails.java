@@ -35,7 +35,7 @@ public class SmoothieDetails {
 	    private String nutrition ;
 	
 	    @Column(name = "calories")
-	    private Int calories ;
+	    private Long calories ;
 	    
 	    public Long getSmoothieId() {
 	        return smoothieId;
@@ -93,11 +93,11 @@ public class SmoothieDetails {
 	        this.nutrition = nutrition;
 	    }
 	
-	    public Int getCalories() {
+	    public Long getCalories() {
 	        return calories;
 	    }
 
-	    public void setCalories(Int calories) {
+	    public void setCalories(Long calories) {
 	        this.calories = calories;
 	    }
 	    
