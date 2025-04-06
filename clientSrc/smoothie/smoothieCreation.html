@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8" />
-  <title>Save Smoothie</title>
+  <title> <h1>🍓Create Smoothie</h1></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -206,7 +207,7 @@
   </div>
 
   <div class="card">
-    <h2>Upload Smoothie Details</h2>
+     <h2>🍓Create Smoothie</h2>
     <form id="smoothieForm" enctype="multipart/form-data">
       <input type="hidden" id="smoothieId" name="smoothieId">
 
@@ -249,6 +250,8 @@
   </div>
 
   <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const smoothieId = urlParams.get("id");
     const form = document.getElementById("smoothieForm");
     const message = document.getElementById("message");
     const previewImage = document.getElementById("previewImage");
@@ -256,6 +259,37 @@
     const imagePreviewContainer = document.getElementById("imagePreviewContainer");
     const uploadBox = document.querySelector(".upload-box");
     const loadingOverlay = document.getElementById("loadingOverlay");
+
+
+  // Populate form if in edit mode
+    if (smoothieId) {
+      fetch(`http://localhost:8080/api/smoothies/getSmoothie/${smoothieId}`)
+        .then(res => {
+          if (!res.ok) throw new Error("Smoothie not found");
+          return res.json();
+        })
+        .then(data => {
+          document.getElementById("smoothieId").value = data.id;
+          document.getElementById("title").value = data.title;
+          document.getElementById("description").value = data.description;
+          document.getElementById("ingredients").value = data.ingredients;
+          document.getElementById("directions").value = data.directions;
+          document.getElementById("nutrition").value = data.nutrition;
+          document.getElementById("calories").value = data.calories;
+
+          if (data.smoothieImage) {
+            previewImage.src = data.smoothieImage.replaceAll("\\", "/");
+            imagePreviewContainer.style.display = "block";
+            uploadBox.style.display = "none";
+            imageInput.required = false;
+          }
+        })
+        .catch(error => {
+          message.textContent = "❌ Failed to load smoothie details.";
+          message.style.color = "red";
+        });
+    }
+
 
     imageInput.addEventListener("change", function () {
       const file = this.files[0];
@@ -294,8 +328,31 @@
       e.preventDefault();
       loadingOverlay.style.display = "flex";
       const formData = new FormData(form);
-
-      fetch("http://localhost:8080/api/smoothies/save", {
+      if (smoothieId) {
+        fetch(`http://localhost:8080/api/smoothies/update?id=${smoothieId}`, {
+        method: "PUT",
+        body: formData
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to save smoothie.");
+        return res.json();
+      })
+      .then(data => {
+        message.textContent = "✅ Smoothie saved successfully!";
+        message.style.color = "green";
+        form.reset();
+        clearImage();
+      })
+      .catch(error => {
+        message.textContent = "❌ Error: " + error.message;
+        message.style.color = "red";
+      })
+      .finally(() => {
+        loadingOverlay.style.display = "none";
+        setTimeout(() => message.textContent = "", 2500);
+      });
+      }else{
+        fetch("http://localhost:8080/api/smoothies/save", {
         method: "POST",
         body: formData
       })
@@ -317,6 +374,8 @@
         loadingOverlay.style.display = "none";
         setTimeout(() => message.textContent = "", 2500);
       });
+      }
+
     });
   </script>
 </body>

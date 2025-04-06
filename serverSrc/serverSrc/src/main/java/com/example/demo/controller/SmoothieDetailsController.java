@@ -192,5 +192,36 @@ public class SmoothieDetailsController {
                                  .body(null); 
         }
     }
+    @PostMapping("/bulk-import")
+    public ResponseEntity<?> bulkImportSmoothies(@RequestBody List<SmoothieDetails> smoothieList) {
+        try {
+            List<SmoothieDetails> smoothiesToSave = smoothieList.stream().map(dto -> {
+                SmoothieDetails smoothie = new SmoothieDetails();
+                smoothie.setTitle(dto.getTitle());
+                smoothie.setDescription(dto.getDescription());
+                smoothie.setIngredients(dto.getIngredients());
+                smoothie.setDirection(dto.getDirection());
+                smoothie.setNutrition(dto.getNutrition());
+                smoothie.setCalories(dto.getCalories()); 				
+                smoothie.setSmoothieImage(null); // or some default image path
+                return smoothie;
+            }).toList();
 
+            List<SmoothieDetails> savedSmoothies = repository.saveAll(smoothiesToSave);
+            return ResponseEntity.ok(savedSmoothies);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Bulk import failed: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/getAllSmoothies")
+    public ResponseEntity<List<SmoothieDetails>> getAllSmoothies() {
+        List<SmoothieDetails> smoothies = repository.findAll();
+
+        if (smoothies.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(smoothies);
+    }
 }
