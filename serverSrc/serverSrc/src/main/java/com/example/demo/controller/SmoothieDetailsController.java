@@ -51,6 +51,7 @@ public class SmoothieDetailsController {
             @RequestParam("description") String description,
             @RequestParam("ingredients") String ingredients,
             @RequestParam("directions") String direction,
+            @RequestParam("calories") Long calories,
             @RequestParam("nutrition") String nutrition) {
 
         SmoothieDetails existing = repository.findById(id)
@@ -90,6 +91,7 @@ public class SmoothieDetailsController {
             existing.setIngredients(ingredients);
             existing.setDirection(direction);
             existing.setNutrition(nutrition);
+            existing.setCalories(calories);
 
             SmoothieDetails updatedSmoothie = repository.save(existing);
             return ResponseEntity.ok(updatedSmoothie);
@@ -203,7 +205,7 @@ public class SmoothieDetailsController {
                 smoothie.setDirection(dto.getDirection());
                 smoothie.setNutrition(dto.getNutrition());
                 smoothie.setCalories(dto.getCalories()); 				
-                smoothie.setSmoothieImage(null); // or some default image path
+                smoothie.setSmoothieImage(""); // or some default image path
                 return smoothie;
             }).toList();
 

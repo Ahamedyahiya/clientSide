@@ -172,6 +172,9 @@
       justify-content: center;
       z-index: 9999;
     }
+    th{
+      text-transform: uppercase;
+    }
 
     @media (max-width: 600px) {
       h2 {
@@ -249,7 +252,7 @@
 
       const headers = Object.keys(data[0]);
       let tableHtml = "<table><thead><tr>";
-      headers.forEach(h => tableHtml += `<th>${h}</th>`);
+      headers.forEach(h => tableHtml += `<th >${h}</th>`);
       tableHtml += "</tr></thead><tbody>";
 
       data.forEach(row => {
@@ -293,6 +296,12 @@
       .then(data => {
         status.textContent = "✅ Smoothies uploaded successfully!";
         status.style.color = "#16a34a";
+        setTimeout(()=>{
+          status.textContent="";
+        },2500)
+        const preview = document.getElementById("preview");
+        preview.innerHTML = "";
+        
         console.log(data);
       })
       .catch(error => {
